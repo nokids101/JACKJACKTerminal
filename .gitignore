@@ -1,3 +1,4 @@
+# List of files searched recursively — even if they’re buried in your uncle’s cousin’s best friend’s folder, they’re still found and ignored 😎📁
 # macOS system files
 **/.DS_Store               # macOS folder metadata (Finder invisible file) # file (ignored everywhere recursively)
 **/.AppleDouble            # Resource forks on non-HFS systems # file (ignored everywhere recursively)
