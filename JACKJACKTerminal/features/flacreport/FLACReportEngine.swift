@@ -53,10 +53,10 @@ struct FLACReportEngine {
                         ColumnArtists.from(url: file),
                         ColumnComment.from(url: file),
                         ColumnFullResolution.from(url: file),
-                        ColumnExplicit.from(url: file),
                         ColumnRecordLabel.from(url: file),
                         ColumnReleaseType.from(url: file),
                         ColumnTotalTracks.from(url: file),
+                        ColumnExplicit.from(url: file),
                         ColumnFileSpecs.from(url: file),
                         ColumnFilepath.from(url: file),
                         ColumnVerify.from(url: file)  
