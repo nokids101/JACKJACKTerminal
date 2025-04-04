@@ -1,0 +1,30 @@
+# macOS system files
+**/.DS_Store               # macOS folder metadata (Finder invisible file) # file (ignored everywhere recursively)
+**/.AppleDouble            # Resource forks on non-HFS systems # file (ignored everywhere recursively)
+**/.LSOverride             # macOS Launch Services override # file (ignored everywhere recursively)
+
+# Icon and Finder
+**/Icon?                  # Icon resource files (old, removable media) # general pattern (recursive)
+**/._*                    # AppleDouble resource fork sidecars # file (ignored everywhere recursively)
+
+# Spotlight indexing
+**/.metadata_never_index   # Prevent Spotlight indexing # file (ignored everywhere recursively)
+**/*.Spotlight-V100*       # Spotlight cache # file (ignored everywhere recursively)
+
+# Xcode
+**/DerivedData/            # Build products # general pattern (recursive)
+**/build/                  # Local build dir # general pattern (recursive)
+**/*.xcworkspace           # Workspace file # file (ignored everywhere recursively)
+**/xcuserdata/             # User-specific workspace settings # general pattern (recursive)
+**/*.xcuserdatad           # IDE/editor layout preferences # file (ignored everywhere recursively)
+**/*.xcuserstate           # Last open state of IDE windows # file (ignored everywhere recursively)
+
+# SwiftPM
+**/.build/                 # SwiftPM build output # file (ignored everywhere recursively)
+**/.packages               # Package pinning data # file (ignored everywhere recursively)
+**/.swiftpm                # SwiftPM project config # file (ignored everywhere recursively)
+**/Package.resolved        # Resolved Swift dependencies (can be re-generated) # file (ignored everywhere recursively)
+
+# Playgrounds
+**/timeline.xctimeline     # Playground timeline # file (ignored everywhere recursively)
+**/playground.xcworkspace  # Playground-specific workspace # file (ignored everywhere recursively)
