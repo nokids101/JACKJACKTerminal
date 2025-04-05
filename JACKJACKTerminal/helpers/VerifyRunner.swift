@@ -12,19 +12,10 @@ struct VerifyRunner {
         task.standardOutput = pipe
         task.standardError = pipe // Capture errors too
 
-        // ✅ Try known possible FLAC binary paths (for Intel + M1/M2 macs)
-        let possiblePaths = [
-            "/opt/homebrew/bin/flac",    // Apple Silicon Macs
-            "/usr/local/bin/flac",       // Intel Macs
-            "/opt/local/bin/flac"        // MacPorts fallback
-        ]
-
-        // 🔍 Pick the first valid FLAC binary path that exists
-        guard let flacPath = possiblePaths.first(where: { FileManager.default.fileExists(atPath: $0) }) else {
+        // ✅ Use the detected FLAC binary path
+        guard let flacPath = ToolManager.path(for: "flac") else {
             return "FLAC binary not found"
         }
-
-        // ✅ Use the detected FLAC binary path
         task.executableURL = URL(fileURLWithPath: flacPath)
         task.arguments = ["-t", url.path]
 
