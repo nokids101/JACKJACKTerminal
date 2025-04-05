@@ -1,9 +1,8 @@
 import Foundation
 
 struct ColumnFullResolution {
-    static func from(url: URL) -> String {
-        //  Begin emoji tagging for Lossless/Lossy/Other
-        let res = FLACMetadataExtractor.getRawTagValues("COMMENT", from: url)
+    static func from(cache: TagCache) -> String {
+        let res = cache.get("COMMENT") //  Begin emoji tagging for Lossless/Lossy/Other
 
         switch res {
         case ["Lossless"]:
@@ -13,10 +12,8 @@ struct ColumnFullResolution {
         default:
             return "⚠️ Unknown"
         }
-        //  End of emoji tagging
     }
 }
-
 
 /* Another more compact option again
  import Foundation

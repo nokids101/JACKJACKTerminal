@@ -1,9 +1,9 @@
+// Extracts the ARTIST tag from the FLAC metadata
+
 import Foundation
 
-// Extracts the ARTIST tag from the FLAC metadata
 struct ColumnArtist {
-    static func from(url: URL) -> String {
-        // Join multiple values with "; " for consistent formatting
-        return FLACMetadataExtractor.getAllTagValues("ARTIST", from: url).joined(separator: "; ")
+    static func from(cache: TagCache) -> String {
+        return cache.get("ARTIST").joined(separator: "; ")  // Join multiple values with "; " for consistent formatting
     }
 }

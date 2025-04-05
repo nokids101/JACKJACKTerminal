@@ -1,11 +1,12 @@
+// Returns explicit warning ONLY if (E) is found in title or filename
+
 import Foundation
 
-// ColumnExplicit.swift
-// Returns explicit warning ONLY if (E) is found in title or filename
 struct ColumnExplicit {
-    static func from(url: URL) -> String {
+    static func from(cache: TagCache, url: URL) -> String {
+        
         // Get title and filename
-        let title = FLACMetadataExtractor.getAllTagValues("TITLE", from: url).joined(separator: "; ")
+        let title = cache.get("TITLE").joined(separator: "; ")
         let filename = url.lastPathComponent
 
         // Show explicit warning only if (E) exists
@@ -13,7 +14,6 @@ struct ColumnExplicit {
             return "🔞 Not for minors"
         }
 
-        // If clean, return blank
         return ""
     }
 }

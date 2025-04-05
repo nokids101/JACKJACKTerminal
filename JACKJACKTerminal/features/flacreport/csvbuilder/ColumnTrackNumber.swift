@@ -1,9 +1,7 @@
 import Foundation
 
-// Extracts the TRACKNUMBER tag from the FLAC metadata
 struct ColumnTrackNumber {
-    static func from(url: URL) -> String {
-        // Handles possible multi-value just in case
-        return FLACMetadataExtractor.getAllTagValues("TRACKNUMBER", from: url).joined(separator: "; ")
+    static func from(cache: TagCache) -> String {
+        return cache.get("TRACKNUMBER").joined(separator: "; ") // Handles possible multi-value just in case
     }
 }

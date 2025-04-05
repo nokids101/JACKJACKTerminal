@@ -38,31 +38,32 @@ struct FLACReportEngine {
                 let lower = rawVerifyOutput.lowercased()
 
                 var row: [String]
+
                 if lower.contains("error") || lower.contains("fail") || lower.contains("invalid") {
-                    row = [ColumnFilename.from(url: file)] + Array(repeating: "🔴ERROR🔴", count: 17)
+                    row = [ColumnFilename.from(url: file)] + Array(repeating: "🔴 ERROR 🔴", count: 17)
                 } else {
+                    let tagCache = TagCache.load(from: file)
                     row = [
                         ColumnFilename.from(url: file),
-                        ColumnTitle.from(url: file),
-                        ColumnArtist.from(url: file),
-                        ColumnAlbum.from(url: file),
-                        ColumnTrackNumber.from(url: file),
+                        ColumnTitle.from(cache: tagCache),
+                        ColumnArtist.from(cache: tagCache),
+                        ColumnAlbum.from(cache: tagCache),
+                        ColumnTrackNumber.from(cache: tagCache),
                         ColumnLength.from(url: file),
-                        ColumnDate.from(url: file),
-                        ColumnAlbumArtist.from(url: file),
-                        ColumnArtists.from(url: file),
-                        ColumnComment.from(url: file),
-                        ColumnFullResolution.from(url: file),
-                        ColumnRecordLabel.from(url: file),
-                        ColumnReleaseType.from(url: file),
-                        ColumnTotalTracks.from(url: file),
-                        ColumnExplicit.from(url: file),
+                        ColumnDate.from(cache: tagCache),
+                        ColumnAlbumArtist.from(cache: tagCache),
+                        ColumnArtists.from(cache: tagCache),
+                        ColumnComment.from(cache: tagCache),
+                        ColumnFullResolution.from(cache: tagCache),
+                        ColumnExplicit.from(cache: tagCache, url: file),
+                        ColumnRecordLabel.from(cache: tagCache),
+                        ColumnReleaseType.from(cache: tagCache),
+                        ColumnTotalTracks.from(cache: tagCache),
                         ColumnFileSpecs.from(url: file),
                         ColumnFilepath.from(url: file),
-                        ColumnVerify.from(url: file)  
+                        ColumnVerify.from(url: file)
                     ]
                 }
-
 
                 // 🧾 Build final CSV row string and write to file
                 let csvLine = row.map { "\"\($0)\"" }.joined(separator: ",") + "\n"
@@ -78,5 +79,6 @@ struct FLACReportEngine {
         }
     }
 }
+
 
 
